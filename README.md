@@ -6,7 +6,7 @@
 </p>
 
 ## About
-Brainfuck interpreter in C.
+Brainfuck interpreter in C. Currently very simple and bare-bones, but options will be added later, as well as possibly a shell.
 
 ## User guide
 WIP
@@ -15,3 +15,6 @@ WIP
 If you want to build pbf using the source code in this repository, please see [building pbf](https://github.com/Rasmustex/pbf/blob/main/BUILD.md).
 
 ***NOTE***: Currently, pbf is only tested on GNU/Linux, and is written with GNU/Linux in mind. There is, however, a good chance that it will compile and run just fine MacOS.
+
+## License
+Pbf is released under the GPLv3

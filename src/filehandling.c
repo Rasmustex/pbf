@@ -25,11 +25,6 @@ bfFile* getbffile( const char* filename ) {
     string[fsize] = 0;
     file->contents = (char*)malloc( fsize + 1 );
 
-    // if( fsize > 10000 ) {
-    //     printf( "Error: File is too long" );
-    //     return file;
-    // }
-
     file->contentssize = fsize;
     strcpy( file->contents, string );
     
