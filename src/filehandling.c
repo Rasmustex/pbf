@@ -8,15 +8,9 @@ bfFile* getbffile( const char* filename ) {
     bfFile* file = (bfFile*)malloc( sizeof( bfFile ) );
     file->contentssize = -1; // Default value. If not overwritten, we know something has gone wrong, and we can exit with an error
 
-    unsigned int PATH_MAX = 200;
-    char cwd[PATH_MAX];
-    if( getcwd( cwd, PATH_MAX * sizeof( char ) ) == NULL ) {
-        printf( "Error getting pwd.\n" );
-        return file;
-    }
     FILE *f = fopen(filename, "rb" ); // open the file
     if( f == NULL ) {
-        printf("Error: couldn't open file");
+        printf( "Error: couldn't open file" );
         fclose( f );
         return file;
     }
@@ -29,11 +23,12 @@ bfFile* getbffile( const char* filename ) {
     fclose( f );
 
     string[fsize] = 0;
+    file->contents = (char*)malloc( fsize + 1 );
 
-    if( fsize > 10000 ) {
-        printf( "Error: File is too long" );
-        return file;
-    }
+    // if( fsize > 10000 ) {
+    //     printf( "Error: File is too long" );
+    //     return file;
+    // }
 
     file->contentssize = fsize;
     strcpy( file->contents, string );

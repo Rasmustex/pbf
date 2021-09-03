@@ -1,7 +1,7 @@
 #pragma once
 
 typedef struct bfFiles {
-    char contents[10000];
+    char* contents;
     int contentssize;
 } bfFile;
 
