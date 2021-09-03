@@ -50,5 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-# build directory
+# build directory and bf files
 build/ 
+*.bf
