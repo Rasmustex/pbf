@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/filehandling.h"
-#include <stdbool.h>
 
 int main ( int argc, const char* argv[] ) {
     if ( argc != 2 ) {
@@ -21,10 +20,7 @@ int main ( int argc, const char* argv[] ) {
 
     unsigned int memoryptr = 0;
     int offset;
-    bool rightBracketFound;
-    bool leftBracketFound;
-    int leftcounter;
-    int rightcounter;
+    int oppositecounter;
     char currentchar;
     char inputchar; 
 
@@ -55,11 +51,10 @@ int main ( int argc, const char* argv[] ) {
                 printf("%c", memoryarray[memoryptr]);
                 break;
             case '[':
-                rightBracketFound = false;
                 offset = 0;
-                leftcounter = 0;
+                oppositecounter = 0;
                 if ( ((int)memoryarray[memoryptr]) == 0 ) {
-                    while( !rightBracketFound ) {
+                    while( 1 ) {
                         offset++;
                         if ( i + offset < file->contentssize ) {
                             currentchar = *(file->contents + (i + offset));
@@ -68,26 +63,25 @@ int main ( int argc, const char* argv[] ) {
                             return -1;
                         }
                         if( currentchar == ']' ) {
-                            if( leftcounter == 0 ) {
+                            if( oppositecounter == 0 ) {
                                 i += offset + 1;
-                                rightBracketFound = true; 
+                                break;
                             } else {
                                 printf( "%d", i + offset );
-                                leftcounter--;
+                                oppositecounter--;
                             }
                         } 
                         if( currentchar == '[' ) {
-                            leftcounter++;
+                            oppositecounter++;
                         }
                     }
                 }
                 break;
             case ']':
-                leftBracketFound = false;
                 offset = 0;
-                rightcounter = 0;
+                oppositecounter = 0;
                 if ( ((int)memoryarray[memoryptr]) > 0 ) {
-                    while( !leftBracketFound ) {
+                    while( 1 ) {
                         offset++;
                         if ( i - offset - 1 > 0 ) {
                             currentchar = *(file->contents + (i - offset));
@@ -96,15 +90,15 @@ int main ( int argc, const char* argv[] ) {
                             return -1;
                         }
                         if( currentchar == '[' ) {
-                            if( rightcounter == 0 ) {
+                            if( oppositecounter == 0 ) {
                                 i -= ( offset + 1 );
-                                leftBracketFound = true;
+                                break;
                             } else {
-                                rightcounter--;
+                                oppositecounter--;
                             }
                         } 
                         if( currentchar == ']' ) {
-                            rightcounter++;
+                            oppositecounter++;
                         }
                     }
                 }
