@@ -11,8 +11,6 @@ int main ( int argc, const char* argv[] ) {
 
     bfFile* file = getbffile( argv[1] ); // requested file in the argument 
     if ( file->contentssize == -1 ) {
-        free( file->contents );
-        free( file );
         return -1;
     }
 
@@ -67,8 +65,6 @@ int main ( int argc, const char* argv[] ) {
                             currentchar = *(file->contents + (i + offset));
                         } else {
                             printf( "Error! found [ but no matching ]. Something is wrong with your brainfuck program\n" );
-                            free( file->contents );
-                            free( file );
                             return -1;
                         }
                         if( currentchar == ']' ) {
@@ -97,8 +93,6 @@ int main ( int argc, const char* argv[] ) {
                             currentchar = *(file->contents + (i - offset));
                         } else {
                             printf( "Error! found ] but no matching [. Something is wrong with your brainfuck program\n" );
-                            free( file->contents );
-                            free( file );
                             return -1;
                         }
                         if( currentchar == '[' ) {
@@ -125,7 +119,5 @@ int main ( int argc, const char* argv[] ) {
         }
     }
 
-    free( file->contents );
-    free( file );
     return 0;
 }
