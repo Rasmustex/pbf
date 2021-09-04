@@ -26,4 +26,4 @@ If you want to build pbf using the source code in this repository, please see [b
 ***NOTE***: Currently, pbf is only tested on GNU/Linux, and is written with GNU/Linux in mind. There is, however, a good chance that it will compile and run just fine MacOS.
 
 ## License
-Pbf is released under the GPLv3
+Pbf is released under the [GPLv3](https://github.com/Rasmustex/pbf/blob/main/LICENSE)
