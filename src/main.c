@@ -3,6 +3,7 @@
 #include "../include/filehandling.h"
 
 int main ( int argc, const char* argv[] ) {
+
     if ( argc != 2 ) {
         printf( "Error: invalid number of arguments.\n");
         return -1;
@@ -13,12 +14,13 @@ int main ( int argc, const char* argv[] ) {
         return -1;
     }
 
-    unsigned char memoryarray[1000]; // create and initialize program memory
-    for (int i = 0; i < 1000; i++ ) {
-        memoryarray[i] = 0;
+    int memsize = 1000;
+    unsigned char memarray[memsize]; // create and initialize program mem
+    for (int i = 0; i < memsize; i++ ) {
+        memarray[i] = 0;
     }
 
-    unsigned int memoryptr = 0;
+    unsigned int memptr = 0;
     int offset;
     int oppositecounter;
     char currentchar;
@@ -28,24 +30,24 @@ int main ( int argc, const char* argv[] ) {
         currentchar = *(file->contents + i);
         switch( currentchar ) {
             case '+':
-                memoryarray[memoryptr]++;
+                memarray[memptr]++;
                 break;
             case '-':
-                memoryarray[memoryptr]--;
+                memarray[memptr]--;
                 break;
             case '>':
-                memoryptr < 999 ? (memoryptr++) : (memoryptr = 0);
+                memptr < memsize - 1 ? (memptr++) : (memptr = 0);
                 break;
             case '<':
-                memoryptr > 0 ? (memoryptr--) : (memoryptr = 999);
+                memptr > 0 ? (memptr--) : (memptr = memsize - 1);
                 break;
             case '.':
-                printf("%c", memoryarray[memoryptr]);
+                printf("%c", memarray[memptr]);
                 break;
             case '[':
                 offset = 0;
                 oppositecounter = 0;
-                if ( ((int)memoryarray[memoryptr]) == 0 ) {
+                if ( ((int)memarray[memptr]) == 0 ) {
                     while( 1 ) {
                         offset++;
                         if ( i + offset < file->contentssize ) {
@@ -72,7 +74,7 @@ int main ( int argc, const char* argv[] ) {
             case ']':
                 offset = 0;
                 oppositecounter = 0;
-                if ( ((int)memoryarray[memoryptr]) > 0 ) {
+                if ( ((int)memarray[memptr]) > 0 ) {
                     while( 1 ) {
                         offset++;
                         if ( i - offset - 1 > 0 ) {
@@ -98,7 +100,7 @@ int main ( int argc, const char* argv[] ) {
             case ',':
                 scanf("%c", &inputchar);
                 scanf("");
-                memoryarray[memoryptr] = inputchar;
+                memarray[memptr] = inputchar;
                 break;
             default:
                 break;
