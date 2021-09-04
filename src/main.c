@@ -51,7 +51,7 @@ int main ( int argc, const char* argv[] ) {
                         if ( i + offset < file->contentssize ) {
                             currentchar = *(file->contents + (i + offset));
                         } else {
-                            printf( "Error! found [ but no matching ]. Something is wrong with your brainfuck program\n" );
+                            printf( "Error! found [ at characther %d but no matching ]. Something is wrong with your brainfuck program\n", i );
                             return -1;
                         }
                         if( currentchar == ']' ) {
@@ -78,7 +78,7 @@ int main ( int argc, const char* argv[] ) {
                         if ( i - offset - 1 > 0 ) {
                             currentchar = *(file->contents + (i - offset));
                         } else {
-                            printf( "Error! found ] but no matching [. Something is wrong with your brainfuck program\n" );
+                            printf( "Error! found ] at character %d but no matching [. Something is wrong with your brainfuck program\n", i );
                             return -1;
                         }
                         if( currentchar == '[' ) {
