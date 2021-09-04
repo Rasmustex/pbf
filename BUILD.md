@@ -9,7 +9,7 @@ cd pbf
 ```
 
 ### Install build dependencies
-You will need the GNU C compiler (`gcc`), as well as `make`, which is used for using the build system:
+You will need the GNU C compiler (`gcc`), as well as `make`, which is used for invoking the build system:
 
 #### Arch Linux
 ```sh
