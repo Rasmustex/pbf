@@ -26,4 +26,21 @@ $ sudo dnf install gcc make
 ## Building 
 Simply type the command `make`.
 
-The binary will be in `build/pbf`. For now, you'd have to install it manually if you want it installed, but an option to `sudo make install` will be added in the future.
+The binary will be in `build/pbf`. 
+
+## Installation
+After building, you can install pbf to your `~/.local/bin` with the command:
+```sh
+$ make install 
+```
+You should now be able to invoke the program using the `pbf` command.
+
+***Make sure that `~/.local/bin` is part of your `$PATH` variable. Otherwise your shell won't find it.***
+
+Otherwise, if you don't want pbf to install into that directory, you can simply change the `installdir` variable in the top of the makefile.
+
+### Uninstalling pbf
+If you want to uninstall pbf, simply go to the pbf directory that has been cloned from github. and run:
+```sh
+$ make uninstall
+```
