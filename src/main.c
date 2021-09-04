@@ -34,18 +34,20 @@ int main ( int argc, const char* argv[] ) {
                 memoryarray[memoryptr]--;
                 break;
             case '>':
-                if( memoryptr < 999 ) {
-                    memoryptr++;
-                } else {
-                    memoryptr = 0;
-                }
+                memoryptr < 999 ? (memoryptr++) : (memoryptr = 0);
+                // if( memoryptr < 999 ) {
+                //     memoryptr++;
+                // } else {
+                //     memoryptr = 0;
+                // }
                 break;
             case '<':
-                if( memoryptr > 0 ) {
-                    memoryptr--;
-                } else {
-                    memoryptr = 999;
-                }
+                memoryptr > 0 ? (memoryptr--) : (memoryptr = 999);
+                // if( memoryptr > 0 ) {
+                //     memoryptr--;
+                // } else {
+                //     memoryptr = 999;
+                // }
                 break;
             case '.':
                 printf("%c", memoryarray[memoryptr]);
