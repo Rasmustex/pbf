@@ -2,8 +2,9 @@
 <p align="center">
   <img width="600"
        alt="screenshot pbf"
-       src="https://user-images.githubusercontent.com/71628935/132048430-f77245d1-7c8b-4370-860b-d0975d2b2689.png">
+       src="https://user-images.githubusercontent.com/71628935/132107692-c66e3471-f8ca-4f29-9498-d1e47e96c985.png">
 </p>
+
 
 ## About
 Pbf is a brainfuck interpreter written in C. It is currently very simple and bare-bones, but options will be added later, as well as possibly a bf "shell".
