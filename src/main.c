@@ -20,9 +20,8 @@ int main ( int argc, const char* argv[] ) {
         memarray[i] = 0;
     }
 
-    unsigned int memptr = 0;
-    int offset;
-    int oppositecounter;
+    unsigned char* ptr = memarray;
+    int neededopposites;
     char currentchar;
     char inputchar; 
 
@@ -30,77 +29,58 @@ int main ( int argc, const char* argv[] ) {
         currentchar = *(file->contents + i);
         switch( currentchar ) {
             case '+':
-                memarray[memptr]++;
+                ++*ptr;
                 break;
             case '-':
-                memarray[memptr]--;
+                --*ptr;
                 break;
             case '>':
-                memptr < memsize - 1 ? (memptr++) : (memptr = 0);
+                ptr < memarray + memsize - 1 ? (ptr++) : (ptr = memarray);
                 break;
             case '<':
-                memptr > 0 ? (memptr--) : (memptr = memsize - 1);
+                ptr > memarray ? (ptr--) : (ptr = memarray + memsize - 1);
                 break;
             case '.':
-                printf("%c", memarray[memptr]);
+                putchar( *ptr );
                 break;
             case '[':
-                offset = 0;
-                oppositecounter = 0;
-                if ( ((int)memarray[memptr]) == 0 ) {
-                    while( 1 ) {
-                        offset++;
-                        if ( i + offset < file->contentssize ) {
-                            currentchar = *(file->contents + (i + offset));
-                        } else {
-                            printf( "Error! found [ at characther %d but no matching ]. Something is wrong with your brainfuck program\n", i );
+                if( !(*ptr) ) {
+                    neededopposites = 1;
+                    while( neededopposites > 0 ) {
+                        if( i < memsize - 1 )
+                            currentchar = *(file->contents + (++i));
+                        else {
+                            printf( "Error! brackets don't match! There is a [ but no matching ]\n" );
                             return -1;
                         }
                         if( currentchar == ']' ) {
-                            if( oppositecounter == 0 ) {
-                                i += offset + 1;
-                                break;
-                            } else {
-                                printf( "%d", i + offset );
-                                oppositecounter--;
-                            }
-                        } 
-                        if( currentchar == '[' )
-                            oppositecounter++;
-                        
+                            neededopposites--;
+                        } else if( currentchar == '[' ) {
+                            neededopposites++;
+                        }
                     }
                 }
                 break;
             case ']':
-                offset = 0;
-                oppositecounter = 0;
-                if ( ((int)memarray[memptr]) > 0 ) {
-                    while( 1 ) {
-                        offset++;
-                        if ( i - offset - 1 > 0 ) {
-                            currentchar = *(file->contents + (i - offset));
-                        } else {
-                            printf( "Error! found ] at character %d but no matching [. Something is wrong with your brainfuck program\n", i );
+                if( *ptr ) {
+                    neededopposites = 1;
+                    while( neededopposites > 0 ) {
+                        if( i > 0 )
+                            currentchar = *(file->contents + (--i));
+                        else {
+                            printf( "Error! brackets don't match! There is a ] but no matching [\n", i );
                             return -1;
                         }
-                        if( currentchar == '[' ) {
-                            if( oppositecounter == 0 ) {
-                                i -= ( offset + 1 );
-                                break;
-                            } else {
-                                oppositecounter--;
-                            }
-                        } 
-                        if( currentchar == ']' ) 
-                            oppositecounter++;
-                        
+                        if( currentchar == '[' )
+                            neededopposites--;
+                        else if( currentchar == ']' )
+                            neededopposites++;                            
                     }
+                    i--;
                 }
                 break;
             case ',':
-                scanf("%c", &inputchar);
-                scanf("");
-                memarray[memptr] = inputchar;
+                *ptr = getchar();
                 break;
             default:
                 break;
