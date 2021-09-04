@@ -53,11 +53,10 @@ int main ( int argc, const char* argv[] ) {
                             printf( "Error! brackets don't match! There is a [ but no matching ]\n" );
                             return -1;
                         }
-                        if( currentchar == ']' ) {
+                        if( currentchar == ']' ) 
                             neededopposites--;
-                        } else if( currentchar == '[' ) {
+                        else if( currentchar == '[' ) 
                             neededopposites++;
-                        }
                     }
                 }
                 break;
