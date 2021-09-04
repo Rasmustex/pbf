@@ -35,19 +35,9 @@ int main ( int argc, const char* argv[] ) {
                 break;
             case '>':
                 memoryptr < 999 ? (memoryptr++) : (memoryptr = 0);
-                // if( memoryptr < 999 ) {
-                //     memoryptr++;
-                // } else {
-                //     memoryptr = 0;
-                // }
                 break;
             case '<':
                 memoryptr > 0 ? (memoryptr--) : (memoryptr = 999);
-                // if( memoryptr > 0 ) {
-                //     memoryptr--;
-                // } else {
-                //     memoryptr = 999;
-                // }
                 break;
             case '.':
                 printf("%c", memoryarray[memoryptr]);
@@ -73,9 +63,9 @@ int main ( int argc, const char* argv[] ) {
                                 oppositecounter--;
                             }
                         } 
-                        if( currentchar == '[' ) {
+                        if( currentchar == '[' )
                             oppositecounter++;
-                        }
+                        
                     }
                 }
                 break;
@@ -99,9 +89,9 @@ int main ( int argc, const char* argv[] ) {
                                 oppositecounter--;
                             }
                         } 
-                        if( currentchar == ']' ) {
+                        if( currentchar == ']' ) 
                             oppositecounter++;
-                        }
+                        
                     }
                 }
                 break;
