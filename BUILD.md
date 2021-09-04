@@ -40,7 +40,7 @@ You should now be able to invoke the program using the `pbf` command.
 Otherwise, if you don't want pbf to install into that directory, you can simply change the `installdir` variable in the top of the makefile.
 
 ### Uninstalling pbf
-If you want to uninstall pbf, simply go to the pbf directory that has been cloned from github. and run:
+If you want to uninstall pbf, simply go to the pbf directory that has been cloned from github, and run:
 ```sh
 $ make uninstall
 ```
