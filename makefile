@@ -1,14 +1,24 @@
-output: main.o filehandling.o | builddir
-	gcc build/main.o build/filehandling.o -o build/pbf
+installdir = ~/.local/bin
+cc = gcc
+builddir = build
 
-main.o: src/main.c include/filehandling.h | builddir
-	gcc -c src/main.c -o build/main.o
+output: main.o filehandling.o | builddirec
+	$(cc) $(builddir)/main.o $(builddir)/filehandling.o -o $(builddir)/pbf
+
+main.o: src/main.c include/filehandling.h | builddirec
+	$(cc) -c src/main.c -o $(builddir)/main.o
 
 filehandling.o: src/filehandling.c include/filehandling.h
-	gcc -c src/filehandling.c -o build/filehandling.o
+	$(cc) -c src/filehandling.c -o $(builddir)/filehandling.o
 
-builddir: 
-	mkdir -p build 
+builddirec: 
+	mkdir -p $(builddir) 
 
-clean: | builddir
-	rm -r build/
+clean: | builddirec
+	rm -r $(builddir)
+
+install: output 
+	cp $(builddir)/pbf $(installdir)
+
+uninstall: | install 
+	rm $(installdir)/pbf
