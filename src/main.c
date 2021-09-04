@@ -24,6 +24,8 @@ int main ( int argc, const char* argv[] ) {
     int neededopposites;
     char currentchar;
     char inputchar; 
+    int offset;
+    int oppositecounter;
 
     for( int i = 0; i < file->contentssize; i++ ) {
         currentchar = *(file->contents + i);
@@ -47,7 +49,7 @@ int main ( int argc, const char* argv[] ) {
                 if( !(*ptr) ) {
                     neededopposites = 1;
                     while( neededopposites > 0 ) {
-                        if( i < memsize - 1 )
+                        if( i < file->contentssize )
                             currentchar = *(file->contents + (++i));
                         else {
                             printf( "Error! brackets don't match! There is a [ but no matching ]\n" );
