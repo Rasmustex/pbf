@@ -20,7 +20,7 @@ To run your program using pbf, simply enter the command:
 pbf <filename>
 ```
 
-## Building
+## Building and installation 
 If you want to build pbf using the source code in this repository, please see [building pbf](https://github.com/Rasmustex/pbf/blob/main/BUILD.md).
 
 ***NOTE***: Currently, pbf is only tested on GNU/Linux, and is written with GNU/Linux in mind. There is, however, a good chance that it will compile and run just fine MacOS.
