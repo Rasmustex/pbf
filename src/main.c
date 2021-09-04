@@ -24,8 +24,6 @@ int main ( int argc, const char* argv[] ) {
     int neededopposites;
     char currentchar;
     char inputchar; 
-    int offset;
-    int oppositecounter;
 
     for( int i = 0; i < file->contentssize; i++ ) {
         currentchar = *(file->contents + i);
