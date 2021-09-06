@@ -34,8 +34,8 @@ int main ( int argc, char** argv ) {
     bfFile* file; 
 
     // Handle command line arguments
-    while(( option = getopt(argc, argv, "hs:e:" )) != -1) {
-        switch (option) {
+    while( ( option = getopt(argc, argv, "hs:e:" ) ) != -1 ) {
+        switch ( option ) {
             case 'h':
                 printHelp();
                 exit(0);
