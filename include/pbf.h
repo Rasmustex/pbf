@@ -13,4 +13,5 @@ enum Errortype {
 
 bfFile* getbffile( const char* filename ); // Found in filehandling.c
 void printError( const char* Error, int errorCode ); // Found in main.c
+void cleanUp( bfFile* file ); // Found in main.c
 void printHelp(); // Found in main.c

@@ -9,6 +9,11 @@ void printError( const char* Error, int errorCode ) {
     exit(errorCode);
 }
 
+void cleanUp( bfFile* file ) { // Safety cleanup to make sure nothing is left behind (although the OS should take care of it)
+    free( file->contents );
+    free( file );
+}
+
 void printHelp() {
     printf("Usage: pbf [OPTIONS] <filename>...\n");
     printf("\n");
@@ -46,7 +51,7 @@ int main ( int argc, char** argv ) {
                 file = (bfFile*)malloc( sizeof( bfFile) );
                 file->contentssize = strlen( optarg );
                 file->contents = (char*)malloc( file->contentssize + 1 );
-                file->contents = optarg;
+                strcpy( file->contents, optarg ); 
                 break;
             case 's':
                 // Specify memory size
@@ -97,6 +102,7 @@ int main ( int argc, char** argv ) {
                             currentchar = *(file->contents + (++i));
                         else {
                             // We have reached EOF without finding the matching bracket
+                            cleanUp( file );
                             printError( "Brackets don't match! There is a [ but no matching ]", bracketError );
                         }
                         if( currentchar == ']' ) // If found, we need one less ] to get out of loop
@@ -114,6 +120,7 @@ int main ( int argc, char** argv ) {
                         if( i > 0 )
                             currentchar = *(file->contents + (--i));
                         else {
+                            cleanUp( file );
                             printError( "Brackets don't match! There is a ] but no matching [", bracketError );
                         }
                         if( currentchar == '[' )
@@ -132,6 +139,6 @@ int main ( int argc, char** argv ) {
                 break;
         }
     }
-    free( file );
+    cleanUp( file );
     return 0;
 }
