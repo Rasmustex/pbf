@@ -2,17 +2,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include "../include/filehandling.h"
+#include "../include/pbf.h"
 
 bfFile* getbffile( const char* filename ) {
     bfFile* file = (bfFile*)malloc( sizeof( bfFile ) );
-    file->contentssize = -1; // Default value. If not overwritten, we know something has gone wrong, and we can exit with an error
 
     FILE *f = fopen(filename, "rb" ); // open the file
     if( f == NULL ) {
-        printf( "Error: couldn't open file" );
         fclose( f );
-        return file;
+        printError( "Couldn't open file", fileOpeningError );
     }
     fseek( f, 0, SEEK_END ); // go to the end of the file stream
     long fsize = ftell(f); // get current position in the file stream. As we are at the end, this will be the final character
