@@ -19,6 +19,3 @@ clean: | builddirec
 
 install: output 
 	cp $(builddir)/pbf $(installdir)
-
-uninstall: | install 
-	rm $(installdir)/pbf
