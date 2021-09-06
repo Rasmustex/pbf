@@ -1,2 +1,2 @@
 ## Not implemented
-- Possibly brainfuck shell
+- Possibly brainfuck shell.

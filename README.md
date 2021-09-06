@@ -22,7 +22,7 @@ pbf [OPTIONS] <filename>...
   -e <string>     evaluates the input string as a brainfuck program
   -h              show help
 ```
-To simply run your brainfuck file with the default configuration, use `pbf <filename>`
+To simply run your brainfuck file with the default configuration, use `pbf <filename>`.
 
 ## Building and installation 
 If you want to build pbf using the source code in this repository, please see [building pbf](https://github.com/Rasmustex/pbf/blob/main/BUILD.md).
@@ -30,4 +30,4 @@ If you want to build pbf using the source code in this repository, please see [b
 ***NOTE***: Currently, pbf is only tested on GNU/Linux, and is written with GNU/Linux in mind. There is, however, a good chance that it will compile and run just fine MacOS.
 
 ## License
-Pbf is released under the [GPLv3](https://github.com/Rasmustex/pbf/blob/main/LICENSE)
+Pbf is released under the [GPLv3](https://github.com/Rasmustex/pbf/blob/main/LICENSE).
