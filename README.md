@@ -17,7 +17,7 @@ Pbf also gives basic error messages, and tells you if one of your brackets is mi
 ## Usage
 ```sh
 # Unless you have installed pbf, you will have to write the path to pbf instead of just "pbf"
-pbf [OPTION] <filename>...
+pbf [OPTIONS] <filename>...
   -s <arraysize>  specify the size of the memory array
   -e <string>     evaluates the input string as a brainfuck program
   -h              show help
