@@ -6,12 +6,12 @@
 
 bfFile* getbffile( const char* filename ) {
     bfFile* file = (bfFile*)malloc( sizeof( bfFile ) );
+    FILE *f;
+    if( access( filename, F_OK ) == 0 )
+        f = fopen(filename, "rb" ); // open the file
+    else
+        printError( "Couldn't access the given file", fileOpeningError );
 
-    FILE *f = fopen(filename, "rb" ); // open the file
-    if( f == NULL ) {
-        fclose( f );
-        printError( "Couldn't open file", fileOpeningError );
-    }
     fseek( f, 0, SEEK_END ); // go to the end of the file stream
     long fsize = ftell(f); // get current position in the file stream. As we are at the end, this will be the final character
     fseek( f, 0, SEEK_SET ); // get back to the beginning
