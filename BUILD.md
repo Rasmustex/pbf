@@ -9,24 +9,24 @@ cd pbf
 ```
 
 ### Install build dependencies
-You will need the GNU C compiler (`gcc`), as well as `make`, which is used for invoking the build system:
+You will need `clang`, as well as `make`, which is used for invoking the build system:
 
 #### Arch Linux
 ```sh
-$ sudo pacman -S gcc make 
+$ sudo pacman -S clang make 
 ```
 #### Debian/Ubuntu
 ```sh
-$ sudo apt install gcc make 
+$ sudo apt install clang make 
 ```
 ### Fedora
 ```sh
-$ sudo dnf install gcc make 
+$ sudo dnf install clang make 
 ```
 ## Building 
-Simply type the command `make`.
+Simply type the command `make release`.
 
-The binary will be in `build/pbf`. 
+The binary will be in `bin/pbf`. 
 
 ## Installation
 After building, you can install pbf to your `~/.local/bin` with the command:

@@ -1,21 +1,29 @@
-installdir = ~/.local/bin
-cc = gcc
-builddir = build
+CC=clang
+CFLAGS=-g -Wall
+INCLUDE=include
+SRC=src
+SRCS=$(wildcard $(SRC)/*.c)
+OBJ=obj
+OBJS=$(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
-output: main.o filehandling.o | builddirec
-	$(cc) $(builddir)/main.o $(builddir)/filehandling.o -o $(builddir)/pbf
+BINDIR=bin
+BIN=$(BINDIR)/pbf
+INSTALLDIR=~/.local/bin
 
-main.o: src/main.c include/pbf.h | builddirec
-	$(cc) -c src/main.c -o $(builddir)/main.o
+all:$(BIN)
 
-filehandling.o: src/filehandling.c include/pbf.h
-	$(cc) -c src/filehandling.c -o $(builddir)/filehandling.o
+release: CFLAGS=-O2 -DNDEBUG
+release: clean
+release: $(BIN)
 
-builddirec: 
-	mkdir -p $(builddir) 
+$(BIN): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-clean: | builddirec
-	rm -r $(builddir)
+$(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/pbf.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
-install: output 
-	cp $(builddir)/pbf $(installdir)
+clean: 
+	$(RM) -r $(BINDIR)/* $(OBJ)/*
+
+install: all
+	cp $(BIN) $(INSTALLDIR)
