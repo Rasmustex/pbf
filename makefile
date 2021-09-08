@@ -19,7 +19,7 @@ release: $(BIN)
 $(BIN): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-$(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/pbf.h
+$(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/pbf.h | dirsetup
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean: 
@@ -27,3 +27,6 @@ clean:
 
 install: all
 	cp $(BIN) $(INSTALLDIR)
+
+dirsetup: 
+	mkdir -p $(BINDIR) $(OBJ) 
