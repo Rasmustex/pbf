@@ -53,3 +53,5 @@ dkms.conf
 # build directory and bf files
 build/ 
 *.bf
+bin
+obj
