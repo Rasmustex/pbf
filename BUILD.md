@@ -9,7 +9,7 @@ cd pbf
 ```
 
 ### Install build dependencies
-You will need `clang`, as well as `make`, which is used for invoking the build system:
+You will need `clang`(or gcc, but you'd have to change the CC variable in the makefile), as well as `make`, which is used for invoking the build system:
 
 #### Arch Linux
 ```sh
