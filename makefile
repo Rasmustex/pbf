@@ -25,7 +25,7 @@ $(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/pbf.h | dirsetup
 clean: 
 	$(RM) -r $(BINDIR)/* $(OBJ)/*
 
-install: all
+install: release 
 	cp $(BIN) $(INSTALLDIR)
 
 dirsetup: 
