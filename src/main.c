@@ -5,7 +5,10 @@
 #include "../include/pbf.h"
 
 void printError( const char* Error, int errorCode ) {
-    printf( "Error: %s\n", Error );
+    printf("\033[0;31m");
+    printf("Error: ");
+    printf("\033[0m");
+    printf( "%s\n", Error );
     exit(errorCode);
 }
 
