@@ -29,10 +29,12 @@ Simply type the command `make release`.
 The binary will be in `bin/pbf`. 
 
 ## Installation
-After building, you can install pbf to your `/usr/bin` with the command:
+After building, you can install pbf to your `~/.local/bin` with the command:
 ```sh
-$ sudo make install 
+$ make install 
 ```
+Make sure that `~/.local/bin` is part of your `PATH` variable
+
 You should now be able to invoke the program using the `pbf` command.
 
 Otherwise, if you don't want pbf to install into that directory, you can simply change the `installdir` variable in the top of the makefile.

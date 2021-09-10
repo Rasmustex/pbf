@@ -8,7 +8,7 @@ OBJS=$(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
 BINDIR=bin
 BIN=$(BINDIR)/pbf
-INSTALLDIR=/usr/bin
+INSTALLDIR=~/.local/bin
 
 all:$(BIN)
 
