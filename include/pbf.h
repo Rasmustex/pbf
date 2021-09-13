@@ -1,17 +1,27 @@
-#pragma once
+#ifndef PBF_H
+#define PBF_H
 
-typedef struct bfFiles {
-    char* contents;
-    int contentssize;
-} bfFile;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-enum Errortype {
-    fileOpeningError = 1,
-    argumentError = 2,
-    bracketError = 3
-};
+    typedef struct bfFiles {
+        char* contents;
+        int contentssize;
+    } bfFile;
 
-bfFile* getbffile( const char* filename ); // Found in filehandling.c
-void printError( const char* Error, int errorCode ); // Found in main.c
-void cleanUp( bfFile* file ); // Found in main.c
-void printHelp(); // Found in main.c
+    enum Errortype {
+        fileOpeningError = 1,
+        argumentError = 2,
+        bracketError = 3
+    };
+
+    bfFile* getbffile( const char* filename ); // Found in filehandling.c
+    void printError( const char* Error, int errorCode ); // Found in main.c
+    void cleanUp( bfFile* file ); // Found in main.c
+    void printHelp(); // Found in main.c
+
+#ifdef __cplusplus
+}
+#endif
+#endif
